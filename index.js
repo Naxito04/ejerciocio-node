@@ -1,12 +1,28 @@
 import chalk from 'chalk'
+import fs from 'node:fs'
 
 const date = () => new Date().toLocaleDateString('es-ES')
 
-export const info = message =>
-  console.log(`${chalk.bgGray(date())} [INFO] ${message}`)
-export const warn = message =>
-  console.log(`${chalk.bgYellow(date())} [WARN] ${message}`)
-export const error = message =>
-  console.log(`${chalk.bgRed(date())} [ERROR] ${message}`)
-export const debug = message =>
-  console.log(`${chalk.bgBlue(date())} [DEBBUG] ${message}`)
+function report(text) {
+  fs.appendFileSync('report.txt', text + '\n')
+}
+
+export function info(message) {
+  report(`${date()} ${message}`)
+  console.log(chalk.gray(`${date()} [INFO] ${message}`))
+}
+
+export function warn(message) {
+  report(`${date()} ${message}`)
+  console.log(chalk.yellow(`${date()} [WARN] ${message}`))
+}
+
+export function error(message) {
+  report(`${date()} ${message}`)
+  console.log(chalk.red(`${date()} [ERROR] ${message}`))
+}
+
+export function debug(message) {
+  report(`${date()} ${message}`)
+  console.log(chalk.blue(`${date()} [DEBUG] ${message}`))
+}
