@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Naxito04/ejerciocio-node/issues"
   },
-  "homepage": "https://github.com/Naxito04/ejerciocio-node#readme"
+  "homepage": "https://github.com/Naxito04/ejerciocio-node#readme",
+  "dependencies": {
+    "chalk": "^6.0.1"
+  }
 }
